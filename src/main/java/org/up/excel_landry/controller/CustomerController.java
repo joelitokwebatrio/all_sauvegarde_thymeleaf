@@ -55,8 +55,10 @@ public class CustomerController {
      * recuperation de la liste des utilisation inserer dans la base de donnes
      * @return
      */
-    @GetMapping
-    public ResponseEntity<List<Customer>> getCustomers() {
-        return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.FOUND);
+    @GetMapping("/lists")
+    public String getCustomers(Model model) {
+        List<Customer> customers  = customerService.getCustomers();
+        model.addAttribute("listCustomers",customers);
+        return "files";
     }
 }
