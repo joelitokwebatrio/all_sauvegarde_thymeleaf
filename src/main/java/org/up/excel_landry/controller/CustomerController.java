@@ -1,8 +1,6 @@
 package org.up.excel_landry.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +24,7 @@ public class CustomerController {
 
     /**
      * rediger l utilisateur vers la page permettant d'uploader un fichier excel
+     *
      * @param model
      * @return
      */
@@ -36,16 +35,17 @@ public class CustomerController {
 
     /**
      * uploader le fichier excel
+     *
      * @param model
      * @param file
      * @return
      */
     @PostMapping("/upload-customers-data")
     public String uploadCustomersData(Model model, @RequestParam("file") MultipartFile file) {
-        String message ="";
+        String message = "";
         this.customerService.saveCustomersToDatabase(file);
-        message = UPLOADED_THE_FILE_SUCCESSFULLY +file.getOriginalFilename();
-        model.addAttribute(MSG,message);
+        message = UPLOADED_THE_FILE_SUCCESSFULLY + file.getOriginalFilename();
+        model.addAttribute(MSG, message);
         return "upload_form";
 
 
@@ -53,12 +53,13 @@ public class CustomerController {
 
     /**
      * recuperation de la liste des utilisation inserer dans la base de donnes
+     *
      * @return
      */
     @GetMapping("/lists")
     public String getCustomers(Model model) {
-        List<Customer> customers  = customerService.getCustomers();
-        model.addAttribute("listCustomers",customers);
+        List<Customer> customers = customerService.getCustomers();
+        model.addAttribute("listCustomers", customers);
         return "files";
     }
 }

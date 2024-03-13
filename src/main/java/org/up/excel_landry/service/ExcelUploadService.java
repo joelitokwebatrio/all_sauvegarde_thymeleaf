@@ -36,7 +36,7 @@ public class ExcelUploadService {
      * @param inputStream
      * @return
      */
-    public static  List<Customer> getCustomersDataFromExcel(InputStream inputStream) {
+    public static List<Customer> getCustomersDataFromExcel(InputStream inputStream) {
         List<Customer> customers = new ArrayList<>();
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);

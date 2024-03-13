@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface CustomerService {
     void saveCustomersToDatabase(MultipartFile file);
-    List<Customer> getCustomers();
 
+    List<Customer> getCustomers();
 
 
 }
